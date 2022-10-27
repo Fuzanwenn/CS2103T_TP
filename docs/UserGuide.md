@@ -44,10 +44,10 @@ Appointment Date: 5/10/22
 
 ### Editing a patient: `editpatient` `ep`
 
-Edit a patient’s information, such as age, contact number, appointment date and doctor’s notes.
+Edit a patient’s information, such as name, phone, email, address, remark and tag.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-* If there is no such patient or task to edit, it will show an error.
+Format: `editpatient INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+* If there is no such patient to edit, it will show an error.
 * Existing values will be updated to the input values.
 * Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. 
    The index **must be a positive integer** 1, 2, 3, …​
@@ -59,16 +59,16 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 Examples:
 Examples:
-* `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` 
+* `editpatient 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` 
    and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags
+* `editpatient 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags
 
 
 ### Editing a bill: `editbill` `eb`
 
 Edit a bill’s information, such as amount, bill's date.
 
-Format: `editbill <prefix> <amount> <billdate>` or `eb <prefix> <amount> <billdate>`
+Format: `editbill <prefix> <input>` or `eb <prefix> <input>`
 
 * The command words are `editbill` or `eb`.
 * If there is no such bill to edit, it will show an error.
@@ -76,7 +76,7 @@ Format: `editbill <prefix> <amount> <billdate>` or `eb <prefix> <amount> <billda
 * Prefix are a/ for amount, d/ for bill's date.
 
 Examples:
-* `editbill 1 a/ 100 d/ 2019-12-25` The first bill's amount has been changed to $100 
+* `editbill 1 a/100 d/ 2019-12-25` The first bill's amount has been changed to $100 
    and bill's date has been changed to Dec 25th, 2019.
 
 
