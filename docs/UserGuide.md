@@ -42,20 +42,44 @@ Contact number: 91234567
 Appointment Date: 5/10/22
 ````
 
-### Editing a patient: `edit`
+### Editing a patient: `editpatient` `ep`
 
 Edit a patient’s information, such as age, contact number, appointment date and doctor’s notes.
 
-Format: `edit Patient Title: content`
-
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * If there is no such patient or task to edit, it will show an error.
 * Existing values will be updated to the input values.
+* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. 
+   The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the patient will be removed i.e adding of tags is not cumulative.
+* You can remove all the patient’s tags by typing `t/` without
+  specifying any tags after it.
 
 Examples:
-* `edit John name: Jack` John’s name has been changed to Jack!
-* `edit John number: 12345678` John’s number has been changed to 12345678.
-* `edit John date: 2019-12-25` John’s appointment date has been changed to Dec 25th, 2019.
-* `edit John note: use medicine` Doctor’s notes for John has been changed to use medicine.
+Examples:
+* `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` 
+   and `johndoe@example.com` respectively.
+* `edit 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags
+
+
+### Editing a bill: `editbill` `eb`
+
+Edit a bill’s information, such as amount, bill's date.
+
+Format: `editbill <prefix> <amount> <billdate>` or `eb <prefix> <amount> <billdate>`
+
+* The command words are `editbill` or `eb`.
+* If there is no such bill to edit, it will show an error.
+* Existing values will be updated to the input values.
+* Prefix are a/ for amount, d/ for bill's date.
+
+Examples:
+* `editbill 1 a/ 100 d/ 2019-12-25` The first bill's amount has been changed to $100 
+   and bill's date has been changed to Dec 25th, 2019.
+
+
 
 ### Finding patients `findpatient` `fp`
 
