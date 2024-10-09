@@ -87,8 +87,8 @@ public class FindBillCommandParser implements Parser<FindBillCommand> {
 
             String trimmedArgs = argMultimap.getValue(PREFIX_BILL_DATE).get().trim();
 
-            if (!trimmedArgs.matches("^[0-9-]+$")) {
-                throw new ParseException("Only numbers and - are allowed as input for finding by bill date");
+            if (!trimmedArgs.matches("^[0-9]{4}-[0-9]{2}-[0-9]{2}$")) {
+                throw new ParseException("Invalid date format. Please use YYYY-MM-DD format.");
             }
 
             this.billDatePredicate = (billDate -> billDate.toString().contains(trimmedArgs.toLowerCase()));

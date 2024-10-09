@@ -64,6 +64,9 @@ public class SortBillCommand extends Command {
     public class AppointmentComparator implements Comparator<Bill> {
         @Override
         public int compare(Bill first, Bill second) {
+            if (first == null || second == null || first.getAppointment() == null || second.getAppointment() == null) {
+                throw new NullPointerException("One of the bills or their appointments is null");
+            }
             return first.getAppointment().toString().compareToIgnoreCase(second.getAppointment().toString());
         }
     }
@@ -74,6 +77,9 @@ public class SortBillCommand extends Command {
     public class AmountComparator implements Comparator<Bill> {
         @Override
         public int compare(Bill first, Bill second) {
+            if (first == null || second == null || first.getAmount() == null || second.getAmount() == null) {
+                throw new NullPointerException("One of the bills or their amounts is null");
+            }
             return first.getAmount().toString().compareToIgnoreCase(second.getAmount().toString());
         }
     }
@@ -84,6 +90,9 @@ public class SortBillCommand extends Command {
     public class DateComparator implements Comparator<Bill> {
         @Override
         public int compare(Bill first, Bill second) {
+            if (first == null || second == null || first.getBillDate() == null || second.getBillDate() == null) {
+                throw new NullPointerException("One of the bills or their bill dates is null");
+            }
             return first.getBillDate().toString().compareToIgnoreCase(second.getBillDate().toString());
         }
     }
@@ -94,6 +103,9 @@ public class SortBillCommand extends Command {
     public class StatusComparator implements Comparator<Bill> {
         @Override
         public int compare(Bill first, Bill second) {
+            if (first == null || second == null || first.getPaymentStatus() == null || second.getPaymentStatus() == null) {
+                throw new NullPointerException("One of the bills or their payment statuses is null");
+            }
             return first.getPaymentStatus().toString().compareToIgnoreCase(second.getPaymentStatus().toString());
         }
     }

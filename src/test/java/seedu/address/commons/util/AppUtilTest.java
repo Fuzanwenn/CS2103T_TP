@@ -5,6 +5,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import java.security.KeyException;
+
 public class AppUtilTest {
 
     @Test
@@ -14,6 +16,7 @@ public class AppUtilTest {
 
     @Test
     public void getImage_nullGiven_throwsNullPointerException() {
+//        assert 1==2;
         assertThrows(NullPointerException.class, () -> AppUtil.getImage(null));
     }
 
@@ -31,6 +34,6 @@ public class AppUtilTest {
     @Test
     public void checkArgument_falseWithErrorMessage_throwsIllegalArgumentException() {
         String errorMessage = "error message";
-        assertThrows(IllegalArgumentException.class, errorMessage, () -> AppUtil.checkArgument(false, errorMessage));
+        assertThrows(KeyException.class, errorMessage, () -> AppUtil.checkArgument(false, errorMessage));
     }
 }

@@ -108,8 +108,10 @@ public class MainWindow extends UiPart<Stage> {
          */
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
+                if (menuItem.getOnAction() != null) {
+                    menuItem.getOnAction().handle(new ActionEvent());
+                    event.consume();
+                }
             }
         });
     }

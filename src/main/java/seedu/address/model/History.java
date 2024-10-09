@@ -88,6 +88,9 @@ public class History {
     }
 
     public boolean compareHealthContactHistory(ReadOnlyHealthContact healthContact) {
+        if (healthContact == null || this.healthContactHistory.size() < 2) {
+            return false;
+        }
         return this.healthContactHistory.get(this.healthContactHistory.size() - 2).equals(healthContact);
     }
 

@@ -30,24 +30,36 @@ public class EditPatientCommandParser implements Parser<EditPatientCommand> {
      * and returns an EditPatientCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public EditPatientCommand parse(String args) throws ParseException {
-        requireNonNull(args);
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
-                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_REMARK);
-
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
+public EditPatientCommand parse(String args) throws ParseException {
+        if (args == null) {
             throw new ParseException(String.format(
-                    MESSAGE_INVALID_COMMAND_FORMAT, EditPatientCommand.MESSAGE_USAGE), pe);
+                    MESSAGE_INVALID_COMMAND_FORMAT, EditPatientCommand.MESSAGE_USAGE));
         }
+    ArgumentMultimap argMultimap =
+            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
+                    PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_REMARK);
 
-        EditPatientDescriptor editPatientDescriptor = createEditPatientDescriptor(argMultimap);
-        return new EditPatientCommand(index, editPatientDescriptor);
+    Index index;
+
+    try {
+        index = ParserUtil.parseIndex(argMultimap.getPreamble());
+    } catch (ParseException pe) {
+        throw new ParseException(String.format(
+                MESSAGE_INVALID_COMMAND_FORMAT, EditPatientCommand.MESSAGE_USAGE), pe);
     }
+
+    EditPatientDescriptor editPatientDescriptor = createEditPatientDescriptor(argMultimap);
+    // Sanitize and validate the input arguments
+    validateArguments(argMultimap);
+    return new EditPatientCommand(index, editPatientDescriptor);
+}
+
+private void validateArguments(ArgumentMultimap argMultimap) throws ParseException {
+    if (argMultimap.getValue(PREFIX_NAME).isPresent() && argMultimap.getValue(PREFIX_NAME).get().contains(";")) {
+        throw new ParseException("Invalid characters in name.");
+    }
+    // Add more validation checks as necessary
+}
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.

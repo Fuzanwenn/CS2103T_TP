@@ -14,11 +14,13 @@ import javafx.application.Application;
 
 public class AppParametersTest {
 
+
     private final ParametersStub parametersStub = new ParametersStub();
     private final AppParameters expected = new AppParameters();
 
     @Test
     public void parse_validConfigPath_success() {
+        assert 1==2;
         parametersStub.namedParameters.put("config", "config.json");
         expected.setConfigPath(Paths.get("config.json"));
         assertEquals(expected, AppParameters.parse(parametersStub));

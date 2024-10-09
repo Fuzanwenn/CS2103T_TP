@@ -35,6 +35,9 @@ public class ParserUtil {
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
+        if (oneBasedIndex == null) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
@@ -49,7 +52,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code name} is invalid.
      */
     public static Name parseName(String name) throws ParseException {
-        requireNonNull(name);
+        if (name == null) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
         String trimmedName = name.trim();
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
@@ -64,7 +69,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code remark} is invalid.
      */
     public static Remark parseRemark(String remark) throws ParseException {
-        requireNonNull(remark);
+        if (remark == null) {
+            throw new ParseException(Remark.MESSAGE_CONSTRAINTS);
+        }
         String trimmedRemark = remark.trim();
         if (!Remark.isValidRemark(trimmedRemark)) {
             throw new ParseException(Remark.MESSAGE_CONSTRAINTS);
@@ -79,7 +86,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code phone} is invalid.
      */
     public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
+        if (phone == null) {
+            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+        }
         String trimmedPhone = phone.trim();
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
@@ -94,7 +103,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code address} is invalid.
      */
     public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
+        if (address == null) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
         String trimmedAddress = address.trim();
         if (!Address.isValidAddress(trimmedAddress)) {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
@@ -109,7 +120,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code email} is invalid.
      */
     public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
+        if (email == null) {
+            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
         String trimmedEmail = email.trim();
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
@@ -151,7 +164,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code name} is invalid.
      */
     public static Doctor parseDoctor(String name) throws ParseException {
-        requireNonNull(name);
+        if (name == null) {
+            throw new ParseException(Doctor.MESSAGE_CONSTRAINTS);
+        }
         String trimmedDoctorName = name.trim();
         if (!Doctor.isValidDoctorName(trimmedDoctorName)) {
             throw new ParseException(Doctor.MESSAGE_CONSTRAINTS);
@@ -166,7 +181,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code name} is invalid.
      */
     public static MedicalTest parseMedicalTest(String name) throws ParseException {
-        requireNonNull(name);
+        if (name == null) {
+            throw new ParseException(MedicalTest.MESSAGE_CONSTRAINTS);
+        }
         String trimmedMedicalTestName = name.trim();
         if (!MedicalTest.isValidMedicalTest(trimmedMedicalTestName)) {
             throw new ParseException(MedicalTest.MESSAGE_CONSTRAINTS);
@@ -181,7 +198,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code dateTime} is invalid.
      */
     public static Slot parseSlot(String dateTime) throws ParseException {
-        requireNonNull(dateTime);
+        if (dateTime == null) {
+            throw new ParseException(Slot.MESSAGE_CONSTRAINTS);
+        }
         String trimmedDateTime = dateTime.trim();
         if (!Slot.isValidSlot(trimmedDateTime)) {
             throw new ParseException(Slot.MESSAGE_CONSTRAINTS);
@@ -197,7 +216,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code date} is invalid.
      */
     public static BillDate parseBillDate(String date) throws ParseException {
-        requireNonNull(date);
+        if (date == null) {
+            throw new ParseException(BillDate.MESSAGE_CONSTRAINTS);
+        }
         String trimmedDate = date.trim();
         if (!BillDate.isValidBillDate(trimmedDate)) {
             throw new ParseException(BillDate.MESSAGE_CONSTRAINTS);
@@ -212,7 +233,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code amount} is invalid.
      */
     public static Amount parseAmount(String amount) throws ParseException {
-        requireNonNull(amount);
+        if (amount == null) {
+            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
+        }
         String trimmedAmount = amount.trim();
         if (!Amount.isValidAmount(trimmedAmount)) {
             throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
@@ -227,7 +250,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code paymentStatus} is invalid.
      */
     public static PaymentStatus parsePaymentStatus(String paymentStatus) throws ParseException {
-        requireNonNull(paymentStatus);
+        if (paymentStatus == null) {
+            throw new ParseException(PaymentStatus.MESSAGE_CONSTRAINTS);
+        }
         String trimmedPaymentStatus = paymentStatus.trim();
         if (!PaymentStatus.isValidPaymentStatus(trimmedPaymentStatus)) {
             throw new ParseException(PaymentStatus.MESSAGE_CONSTRAINTS);

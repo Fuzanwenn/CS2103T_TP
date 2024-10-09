@@ -74,6 +74,9 @@ public class Version implements Comparable<Version> {
 
     @Override
     public int compareTo(Version other) {
+        if (other == null) {
+            throw new NullPointerException("The other version to compare to is null");
+        }
         if (major != other.major) {
             return major - other.major;
         }

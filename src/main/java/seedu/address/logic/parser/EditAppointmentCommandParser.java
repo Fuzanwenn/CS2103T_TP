@@ -24,7 +24,10 @@ public class EditAppointmentCommandParser implements Parser<EditAppointmentComma
      *                                                              the expected format
      */
     public EditAppointmentCommand parse(String args) throws ParseException {
-        requireNonNull(args);
+        if (args == null) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditAppointmentCommand.MESSAGE_USAGE));
+        }
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_MEDICAL_TEST, PREFIX_SLOT, PREFIX_DOCTOR);
 

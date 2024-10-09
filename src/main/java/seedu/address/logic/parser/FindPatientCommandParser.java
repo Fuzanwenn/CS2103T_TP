@@ -162,7 +162,7 @@ public class FindPatientCommandParser implements Parser<FindPatientCommand> {
     public void createPhonePredicate(ArgumentMultimap argMultimap) throws ParseException {
         checkNumberOfPrefixes(PREFIX_PHONE, argMultimap);
 
-        String trimmedArgs = argMultimap.getValue(PREFIX_PHONE).get().trim();
+        String trimmedArgs = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()).toString().trim();
 
         if (!trimmedArgs.matches("[0-9]+")) {
             throw new ParseException("Input for finding by phone number must be a number consisting of one or"
@@ -182,7 +182,7 @@ public class FindPatientCommandParser implements Parser<FindPatientCommand> {
     public void createEmailPredicate(ArgumentMultimap argMultimap) throws ParseException {
         checkNumberOfPrefixes(PREFIX_EMAIL, argMultimap);
 
-        String trimmedArgs = argMultimap.getValue(PREFIX_EMAIL).get().trim();
+        String trimmedArgs = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()).toString().trim();
 
         if (trimmedArgs.isEmpty()) {
             throw new ParseException("Input for finding by email should not be empty");

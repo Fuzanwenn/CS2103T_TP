@@ -50,9 +50,9 @@ public class UiManager implements Ui {
         }
     }
 
-    private Image getImage(String imagePath) {
-        return new Image(MainApp.class.getResourceAsStream(imagePath));
-    }
+private Image getImage(String imagePath) {
+    return new Image(MainApp.class.getResourceAsStream(imagePath));
+}
 
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);

@@ -26,6 +26,7 @@ public class UiPartTest {
 
     @Test
     public void constructor_nullFileUrl_throwsNullPointerException() {
+        assertEquals(1, 2);
         assertThrows(NullPointerException.class, () -> new TestUiPart<Object>((URL) null));
         assertThrows(NullPointerException.class, () -> new TestUiPart<Object>((URL) null, new Object()));
     }

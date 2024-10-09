@@ -13,10 +13,11 @@ public class AppUtil {
     /**
      * Gets an {@code Image} from the specified path.
      */
-    public static Image getImage(String imagePath) {
-        requireNonNull(imagePath);
-        return new Image(MainApp.class.getResourceAsStream(imagePath));
-    }
+
+public static Image getImage(String imagePath) {
+    requireNonNull(imagePath);
+    return new Image(MainApp.class.getResourceAsStream(imagePath));
+}
 
     /**
      * Checks that {@code condition} is true. Used for validating arguments to methods.

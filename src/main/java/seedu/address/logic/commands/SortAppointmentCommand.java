@@ -63,7 +63,12 @@ public class SortAppointmentCommand extends Command {
     public class NameComparator implements Comparator<Appointment> {
         @Override
         public int compare(Appointment first, Appointment second) {
-            return first.getName().toString().compareToIgnoreCase(second.getName().toString());
+            if (first == null || second == null || first.getName() == null || second.getName() == null) {
+                throw new NullPointerException("One of the appointments or their names is null");
+            }
+             String firstName = first.getName() != null ? first.getName().toString() : "";
+             String secondName = second.getName() != null ? second.getName().toString() : "";
+             return firstName.compareToIgnoreCase(secondName);
         }
     }
 
@@ -71,21 +76,30 @@ public class SortAppointmentCommand extends Command {
      * Compares two Appointments by medical test.
      */
     public class TestComparator implements Comparator<Appointment> {
+
         @Override
         public int compare(Appointment first, Appointment second) {
-            return first.getMedicalTest().toString().compareToIgnoreCase(second.getMedicalTest().toString());
+             String firstTest = first.getMedicalTest() != null ? first.getMedicalTest().toString() : "";
+             String secondTest = second.getMedicalTest() != null ? second.getMedicalTest().toString() : "";
+             return firstTest.compareToIgnoreCase(secondTest);
         }
     }
 
     /**
      * Compares two Appointments by slots.
+            if (first == null || second == null || first.getSlot() == null || second.getSlot() == null) {
+                throw new NullPointerException("One of the appointments or their slots is null");
+            }
      */
     public class SlotComparator implements Comparator<Appointment> {
         @Override
         public int compare(Appointment first, Appointment second) {
-            return first.getSlot().toString().compareToIgnoreCase(second.getSlot().toString());
+             String firstSlot = first.getSlot() != null ? first.getSlot().toString() : "";
+             String secondSlot = second.getSlot() != null ? second.getSlot().toString() : "";
+             return firstSlot.compareToIgnoreCase(secondSlot);
         }
     }
+
 
     /**
      * Compares two Appointments by doctor.
@@ -93,7 +107,9 @@ public class SortAppointmentCommand extends Command {
     public class DoctorComparator implements Comparator<Appointment> {
         @Override
         public int compare(Appointment first, Appointment second) {
-            return first.getDoctor().toString().compareToIgnoreCase(second.getDoctor().toString());
+             String firstDoctor = first.getDoctor() != null ? first.getDoctor().toString() : "";
+             String secondDoctor = second.getDoctor() != null ? second.getDoctor().toString() : "";
+             return firstDoctor.compareToIgnoreCase(secondDoctor);
         }
     }
 

@@ -27,6 +27,17 @@ run {
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    ignoreFailures = false
+    jvmArgs '-ea'  // Enable assertions in the JVM
+    testLogging {
+        events "passed", "skipped", "failed"  // Log test events
+        exceptionFormat "full"  // Get the full exception stack trace
+        showStandardStreams = true  // Show stdout and stderr in logs
+    }
+}
+
+tasks.build {
+    dependsOn test  // Ensure that tests are run when the build task is executed
 }
 
 task coverage(type: JacocoReport) {
@@ -45,6 +56,8 @@ task coverage(type: JacocoReport) {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
     String jUnitVersion = '5.4.0'
     String javaFxVersion = '11'
 

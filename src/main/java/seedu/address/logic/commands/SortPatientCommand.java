@@ -63,6 +63,9 @@ public class SortPatientCommand extends Command {
     public class NameComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
+            if (first == null || second == null || first.getName() == null || second.getName() == null) {
+                throw new NullPointerException("One of the patients or their names is null");
+            }
             return first.getName().toString().compareToIgnoreCase(second.getName().toString());
         }
     }
@@ -73,6 +76,9 @@ public class SortPatientCommand extends Command {
     public class PhoneComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
+            if (first == null || second == null || first.getPhone() == null || second.getPhone() == null) {
+                throw new NullPointerException("One of the patients or their phones is null");
+            }
             return first.getPhone().toString().compareToIgnoreCase(second.getPhone().toString());
         }
     }
@@ -83,6 +89,9 @@ public class SortPatientCommand extends Command {
     public class EmailComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
+            if (first == null || second == null || first.getEmail() == null || second.getEmail() == null) {
+                throw new NullPointerException("One of the patients or their emails is null");
+            }
             return first.getEmail().toString().compareToIgnoreCase(second.getEmail().toString());
         }
     }
@@ -93,6 +102,9 @@ public class SortPatientCommand extends Command {
     public class AddressComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
+            if (first == null || second == null || first.getAddress() == null || second.getAddress() == null) {
+                throw new NullPointerException("One of the patients or their addresses is null");
+            }
             return first.getAddress().toString().compareToIgnoreCase(second.getAddress().toString());
         }
     }

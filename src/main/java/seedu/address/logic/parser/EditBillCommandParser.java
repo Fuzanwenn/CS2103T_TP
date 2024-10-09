@@ -22,7 +22,10 @@ public class EditBillCommandParser implements Parser<EditBillCommand> {
      *                                                              the expected format
      */
     public EditBillCommand parse(String args) throws ParseException {
-        requireNonNull(args);
+        if (args == null) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditBillCommand.MESSAGE_USAGE));
+        }
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_AMOUNT, PREFIX_BILL_DATE);
 

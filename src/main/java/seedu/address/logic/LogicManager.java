@@ -43,10 +43,12 @@ public class LogicManager implements Logic {
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
-        logger.info("----------------[USER COMMAND][" + commandText + "]");
+        // Validate and sanitize the commandText
+        String sanitizedCommandText = sanitizeInput(commandText);
+        logger.info("----------------[USER COMMAND][" + sanitizedCommandText + "]");
 
         CommandResult commandResult;
-        Command command = healthContactParser.parseCommand(commandText);
+        Command command = healthContactParser.parseCommand(sanitizedCommandText);
         model.getHistory().updateHealthContactHistory();
         if (!(command instanceof UndoCommand || command instanceof RedoCommand)) {
             model.getHistory().clearRedoHealthContactHistory();
@@ -57,7 +59,7 @@ public class LogicManager implements Logic {
         try {
             commandResult = command.execute(model);
         } catch (CommandException e) {
-            logger.info("Invalid command: " + commandText);
+            logger.info("Invalid command: " + sanitizedCommandText);
             model.getHistory().deleteHealthContactHistory(model.getHistory().getHealthContactHistorySize() - 1);
             model.getHistory().deletePatientsHistory(model.getHistory().getPatientsHistorySize() - 1);
             model.getHistory().deleteAppointmentsHistory(model.getHistory().getAppointmentsHistorySize() - 1);
@@ -73,6 +75,13 @@ public class LogicManager implements Logic {
         }
 
         return commandResult;
+    }
+
+    // Method to sanitize input
+    private String sanitizeInput(String input) {
+        // Implement input sanitization logic here
+        // For example, remove any dangerous characters or patterns
+        return input.replaceAll("[^a-zA-Z0-9 ]", "").trim();
     }
 
     @Override
