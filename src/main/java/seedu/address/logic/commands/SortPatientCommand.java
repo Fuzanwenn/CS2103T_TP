@@ -63,7 +63,8 @@ public class SortPatientCommand extends Command {
     public class NameComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
-            return first.getName().toString().compareToIgnoreCase(second.getName().toString());
+//            return first.getName().toString().compareToIgnoreCase(second.getName().toString());
+            return 0;
         }
     }
 
@@ -73,7 +74,7 @@ public class SortPatientCommand extends Command {
     public class PhoneComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
-            return first.getPhone().toString().compareToIgnoreCase(second.getPhone().toString());
+            return 0;
         }
     }
 
@@ -83,7 +84,7 @@ public class SortPatientCommand extends Command {
     public class EmailComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
-            return first.getEmail().toString().compareToIgnoreCase(second.getEmail().toString());
+            return 0;
         }
     }
 
@@ -93,7 +94,7 @@ public class SortPatientCommand extends Command {
     public class AddressComparator implements Comparator<Patient> {
         @Override
         public int compare(Patient first, Patient second) {
-            return first.getAddress().toString().compareToIgnoreCase(second.getAddress().toString());
+            return 0;
         }
     }
 
